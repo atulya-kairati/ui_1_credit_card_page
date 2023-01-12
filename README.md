@@ -6,4 +6,3 @@ Not my design. Found it on google.
 
 
 <img src="screen.png" width="400">
-![Screenshot](screen.png)
