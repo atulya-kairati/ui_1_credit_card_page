@@ -4,4 +4,5 @@ practice
 UI mock up for a credit card details entry.
 Not my design. Found it on google.
 
-![Screenshot](screen.png | width=100)
+
+<img src="screen.png" width="400">
