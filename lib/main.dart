@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_1_credit_card_entry/widgets/circle.dart';
 
 import 'widgets/fancy_card.dart';
+import 'widgets/gradient_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,121 +50,96 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const FancyCard(),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        "Card Holder",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            ?.copyWith(color: Colors.grey[600]!),
-                      ),
-                      const TextField(),
-                      const SizedBox(height: 32),
-                      Text(
-                        "Card Number",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            ?.copyWith(color: Colors.grey[600]!),
-                      ),
-                      const TextField(),
-                      const SizedBox(height: 32),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                "Expiration Date",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2
-                                    ?.copyWith(color: Colors.grey[600]!),
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: (width - 24 * 2) / 4,
-                                    child: const TextField(
-                                      decoration:
-                                          InputDecoration(hintText: "MM"),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  SizedBox(
-                                    width: (width - 24 * 2) / 3.6,
-                                    child: const TextField(
-                                      decoration:
-                                          InputDecoration(hintText: "YYYY"),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "CVV code",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2
-                                    ?.copyWith(color: Colors.grey[600]!),
-                              ),
-                              SizedBox(
-                                width: (width - 24 * 2) / 3.6,
-                                child: const TextField(
-                                  decoration:
-                                      InputDecoration(hintText: "eg. 232"),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 32,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.blue[200]!,
-                                Colors.purpleAccent[100]!,
-                              ],
-                            ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Text(
-                                "Submit",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                getForm(context, width),
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Container getForm(BuildContext context, double width) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            "Card Holder",
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2
+                ?.copyWith(color: Colors.grey[600]!),
+          ),
+          const TextField(),
+          const SizedBox(height: 32),
+          Text(
+            "Card Number",
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2
+                ?.copyWith(color: Colors.grey[600]!),
+          ),
+          const TextField(),
+          const SizedBox(height: 32),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "Expiration Date",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2
+                        ?.copyWith(color: Colors.grey[600]!),
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: (width - 24 * 2) / 4,
+                        child: const TextField(
+                          decoration: InputDecoration(hintText: "MM"),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      SizedBox(
+                        width: (width - 24 * 2) / 3.6,
+                        child: const TextField(
+                          decoration: InputDecoration(hintText: "YYYY"),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "CVV code",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2
+                        ?.copyWith(color: Colors.grey[600]!),
+                  ),
+                  SizedBox(
+                    width: (width - 24 * 2) / 3.6,
+                    child: const TextField(
+                      decoration: InputDecoration(hintText: "eg. 232"),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 32,
+          ),
+          const GradientButton(),
         ],
       ),
     );
@@ -205,26 +181,5 @@ class Home extends StatelessWidget {
         ),
       ),
     ];
-  }
-}
-
-class GradientButton extends StatelessWidget {
-  const GradientButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.blue[200]!,
-              Colors.purpleAccent[100]!,
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
